@@ -1,0 +1,9 @@
+# Ignore everything by default
+*
+
+# But keep the Git ignore file itself
+!.gitignore
+
+# Track the Atlas code folder
+!00_RUN_THESE_FILES/
+!00_RUN_THESE_FILES/**
