@@ -1,9 +1,16 @@
 # Ignore everything by default
 *
 
-# But keep the Git ignore file itself
+# Keep Git config
 !.gitignore
 
-# Track the Atlas code folder
+# Track Atlas code folder
 !00_RUN_THESE_FILES/
 !00_RUN_THESE_FILES/**
+
+# But ignore generated Python/cache files
+00_RUN_THESE_FILES/**/__pycache__/
+00_RUN_THESE_FILES/**/*.pyc
+
+# Ignore generated logs
+00_RUN_THESE_FILES/*ERROR_LOG*.txt
