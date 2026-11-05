@@ -324,9 +324,11 @@ def run_gui(default_workers: int = 6) -> int:
 
     def browse_recon():
         p = filedialog.askopenfilename(
+            title="Choose Atlas reconciliation decisions workbook/CSV",
             filetypes=[
-                ("Atlas reconciliation decisions", "ATLAS_RECONCILIATION_DECISIONS*.xlsx ATLAS_RECONCILIATION_DECISIONS*.csv"),
-                ("Excel files", "*.xlsx"),
+                ("Excel/CSV decision files", "*.xlsx *.xlsm *.csv"),
+                ("Atlas reconciliation decisions", "ATLAS_RECONCILIATION_DECISIONS*.xlsx ATLAS_RECONCILIATION_DECISIONS*.xlsm ATLAS_RECONCILIATION_DECISIONS*.csv"),
+                ("Excel workbooks", "*.xlsx *.xlsm"),
                 ("CSV files", "*.csv"),
                 ("All files", "*.*"),
             ]
@@ -336,9 +338,11 @@ def run_gui(default_workers: int = 6) -> int:
 
     def browse_probe():
         p = filedialog.askopenfilename(
+            title="Choose optional Probe session QC decisions workbook/CSV",
             filetypes=[
-                ("Atlas Probe session decisions", "ATLAS_PROBE_SESSION_DECISIONS*.xlsx ATLAS_PROBE_SESSION_DECISIONS*.csv"),
-                ("Excel files", "*.xlsx"),
+                ("Excel/CSV decision files", "*.xlsx *.xlsm *.csv"),
+                ("Atlas Probe session decisions", "ATLAS_PROBE_SESSION_DECISIONS*.xlsx ATLAS_PROBE_SESSION_DECISIONS*.xlsm ATLAS_PROBE_SESSION_DECISIONS*.csv"),
+                ("Excel workbooks", "*.xlsx *.xlsm"),
                 ("CSV files", "*.csv"),
                 ("All files", "*.*"),
             ]
@@ -362,18 +366,24 @@ def run_gui(default_workers: int = 6) -> int:
     ttk.Button(frm, text="Browse…", command=browse_meta).grid(row=row, column=2)
     row += 1
 
-    ttk.Label(frm, text="Reconciliation decisions XLSX/CSV (optional)").grid(row=row, column=0, sticky="w", pady=5)
+    ttk.Label(frm, text="Atlas reconciliation decisions XLSX/CSV (optional)").grid(row=row, column=0, sticky="w", pady=5)
     ttk.Entry(frm, textvariable=recon_var, width=72).grid(row=row, column=1, sticky="ew", padx=8)
     ttk.Button(frm, text="Browse…", command=browse_recon).grid(row=row, column=2)
     row += 1
+    ttk.Label(
+        frm,
+        text="Use the main ATLAS_RECONCILIATION_DECISIONS file to keep/exclude/remap sessions before Atlas builds reports.",
+        foreground="#555555",
+    ).grid(row=row, column=1, columnspan=2, sticky="w", padx=8, pady=(0, 6))
+    row += 1
 
-    ttk.Label(frm, text="Probe session QC decisions XLSX/CSV (optional)").grid(row=row, column=0, sticky="w", pady=5)
+    ttk.Label(frm, text="Final Probe session QC decisions XLSX/CSV (optional)").grid(row=row, column=0, sticky="w", pady=5)
     ttk.Entry(frm, textvariable=probe_var, width=72).grid(row=row, column=1, sticky="ew", padx=8)
     ttk.Button(frm, text="Browse…", command=browse_probe).grid(row=row, column=2)
     row += 1
     ttk.Label(
         frm,
-        text="If blank, Atlas auto-detects ATLAS_PROBE_SESSION_DECISIONS.xlsx/csv in the output folder or Atlas program folder.",
+        text="Only use this if you made a separate ATLAS_PROBE_SESSION_DECISIONS file after reconciliation; otherwise leave blank.",
         foreground="#555555",
     ).grid(row=row, column=1, columnspan=2, sticky="w", padx=8, pady=(0, 6))
     row += 1

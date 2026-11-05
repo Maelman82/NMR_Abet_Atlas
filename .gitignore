@@ -1,16 +1,59 @@
-# Ignore everything by default
-*
+# Local Python environments and caches
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
 
-# Keep Git config
-!.gitignore
+# Credentials and local configuration
+.env
+.env.*
+*.pem
+*.key
+credentials*.json
+secrets*.json
 
-# Track Atlas code folder
-!00_RUN_THESE_FILES/
-!00_RUN_THESE_FILES/**
+# Research databases, metadata, results, and local workbooks
+*.abetdb
+*.ABETdb
+*.mdb
+*.accdb
+*.db
+*.sqlite*
+*.csv
+*.tsv
+*.xls*
+*.parquet
+*.feather
+*.h5
+*.hdf5
+*.pkl
+*.pickle
+*.pdf
+*.png
+*.jpg
+*.jpeg
+*.log
+*_LOG.txt
+.Rhistory
+cache/
+reports/
+outputs/
+data/
+01_DATABASES*/
+02_METADATA/
+03_ATLAS_OUTPUTS/
+04_DATA*/
+05_ABET_Files/
+99_OLD_DO_NOT_USE/
 
-# But ignore generated Python/cache files
-00_RUN_THESE_FILES/**/__pycache__/
-00_RUN_THESE_FILES/**/*.pyc
-
-# Ignore generated logs
-00_RUN_THESE_FILES/*ERROR_LOG*.txt
+# Archives and executable binaries
+*.zip
+*.7z
+*.exe
+*.dll
